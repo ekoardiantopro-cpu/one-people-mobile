@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One People Portfolio Presentation - PT. Ekozer</title>
+  <style>
+    :root {
+      --ink: #16324f;
+      --ink-soft: #58718b;
+      --teal: #1d9bb2;
+      --teal-soft: #dff7fb;
+      --blue: #4b7fe0;
+      --orange: #ffb26d;
+      --yellow: #ffe4a0;
+      --surface: rgba(255, 255, 255, 0.86);
+      --surface-strong: rgba(255, 255, 255, 0.94);
+      --line: rgba(22, 50, 79, 0.09);
+      --shadow: 0 28px 70px rgba(28, 68, 121, 0.12);
+      --radius-xl: 34px;
+      --radius-lg: 26px;
+      --radius-md: 20px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+    }
+
+    body {
+      margin: 0;
+      font-family: "SF Pro Display", "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, rgba(75, 127, 224, 0.18), transparent 24%),
+        radial-gradient(circle at bottom left, rgba(255, 178, 109, 0.18), transparent 24%),
+        linear-gradient(145deg, #f6fcff 0%, #eef8fb 52%, #fffaf3 100%);
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    .deck {
+      width: 100%;
+    }
+
+    .slide {
+      min-height: 100vh;
+      padding: 34px 22px;
+      display: grid;
+      place-items: center;
+      scroll-snap-align: start;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide::before,
+    .slide::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .slide::before {
+      width: 540px;
+      height: 300px;
+      right: -120px;
+      top: -90px;
+      background: linear-gradient(135deg, rgba(114, 214, 223, 0.96), rgba(75, 127, 224, 0.88));
+    }
+
+    .slide::after {
+      width: 320px;
+      height: 320px;
+      left: -120px;
+      bottom: -150px;
+      background: linear-gradient(135deg, rgba(255, 178, 109, 0.88), rgba(255, 228, 160, 0.82));
+    }
+
+    .card {
+      width: min(1280px, 100%);
+      min-height: min(780px, calc(100vh - 68px));
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .card-inner {
+      height: 100%;
+      padding: 38px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(29, 155, 178, 0.11);
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .slide-number {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--ink-soft);
+    }
+
+    h1 {
+      font-size: clamp(42px, 5vw, 72px);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      max-width: 820px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 3vw, 44px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      max-width: 900px;
+    }
+
+    h3 {
+      font-size: 22px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .lead {
+      max-width: 860px;
+      font-size: clamp(17px, 2vw, 23px);
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      margin-top: auto;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .panel p,
+    .panel li,
+    .muted {
+      color: var(--ink-soft);
+    }
+
+    .panel ul {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 10px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      background: rgba(29, 155, 178, 0.11);
+      color: var(--teal);
+    }
+
+    .tag.alt {
+      background: rgba(75, 127, 224, 0.11);
+      color: var(--blue);
+    }
+
+    .tag.warn {
+      background: rgba(255, 178, 109, 0.16);
+      color: #b25c1f;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .metric {
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+    }
+
+    .metric-value {
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+
+    .metric-label {
+      margin-top: 8px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .gallery.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .device {
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 14px;
+      display: grid;
+      gap: 12px;
+      box-shadow: 0 18px 40px rgba(37, 72, 128, 0.08);
+    }
+
+    .device img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 18px;
+      border: 1px solid rgba(22, 50, 79, 0.08);
+      background: linear-gradient(180deg, #f8fcff, #eef7fb 60%, #fff9f3);
+    }
+
+    .device.wide img {
+      height: 320px;
+    }
+
+    .device figcaption {
+      font-size: 14px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+    }
+
+    .device strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 17px;
+      color: var(--ink);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .payroll-mock {
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+      background: linear-gradient(160deg, rgba(255,255,255,0.9), rgba(233,247,251,0.9));
+    }
+
+    .payroll-mock::before,
+    .payroll-mock::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+    }
+
+    .payroll-mock::before {
+      width: 220px;
+      height: 220px;
+      right: -50px;
+      top: -70px;
+      background: linear-gradient(135deg, rgba(114,214,223,0.92), rgba(75,127,224,0.9));
+    }
+
+    .payroll-mock::after {
+      width: 170px;
+      height: 170px;
+      left: -50px;
+      bottom: -50px;
+      background: linear-gradient(135deg, rgba(255,178,109,0.88), rgba(255,228,160,0.82));
+    }
+
+    .phone-ui {
+      position: relative;
+      z-index: 1;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(22, 50, 79, 0.08);
+      background: linear-gradient(180deg, #f8fcff, #eef7fb 58%, #fff9f4);
+      box-shadow: 0 22px 48px rgba(29, 77, 138, 0.12);
+    }
+
+    .phone-body {
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .phone-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .pay-card {
+      border-radius: 24px;
+      padding: 22px;
+      background: linear-gradient(135deg, #1097ae, #4b7fe0);
+      color: white;
+      display: grid;
+      gap: 10px;
+    }
+
+    .pay-card .label {
+      font-size: 18px;
+      opacity: 0.92;
+    }
+
+    .pay-card .amount {
+      font-size: 40px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+
+    .sheet {
+      background: rgba(255,255,255,0.94);
+      border-radius: 22px;
+      border: 1px solid rgba(22,50,79,0.08);
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .sheet .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 15px;
+      color: var(--ink-soft);
+    }
+
+    .sheet .row strong {
+      color: var(--ink);
+    }
+
+    .sheet .total {
+      font-weight: 800;
+      color: var(--ink);
+      border-top: 1px solid rgba(22,50,79,0.08);
+      padding-top: 12px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+      margin-top: auto;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      margin-top: 6px;
+      background: linear-gradient(135deg, var(--teal), var(--blue));
+    }
+
+    .timeline-item strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+
+    .closing {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+    }
+
+    .closing p {
+      max-width: 780px;
+    }
+
+    @media (max-width: 1080px) {
+      .hero,
+      .two-col,
+      .metric-grid,
+      .gallery,
+      .gallery.three {
+        grid-template-columns: 1fr;
+      }
+
+      .device img,
+      .device.wide img {
+        height: 360px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card-inner {
+        padding: 28px 22px;
+      }
+
+      .slide {
+        padding: 18px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck">
+    <section class="slide">
+      <article class="card">
+        <div class="card-inner">
+          <div class="topline">
+            <div class="eyebrow">Company Portfolio</div>
+            <div class="slide-number">01 / 09</div>
+          </div>
+
+          <div>
+            <h1>One People Mobile for PT. Ekozer</h1>
+            <p class="lead">Aplikasi employee self-service berbasis iOS yang menyatukan login enterprise, layanan HR harian, talent intelligence, dan AI assistance ke dalam satu pengalaman mobile yang modern, elegan, dan siap dipresentasikan sebagai aset portofolio perusahaan.</p>
+          </div>
+
+          <div class="hero">
+            <div class="panel">
+              <h3>Portfolio Positioning</h3>
+              <ul>
+                <li>Menampilkan produk internal HR digital dengan kualitas presentasi yang layak untuk stakeholder, client showcase, atau company profile.</li>
+                <li>Menggabungkan core HR operations, talent modules, dan AI layer dalam satu narasi produk yang utuh.</li>
+                <li>Menggunakan visual modern mobile app background dengan teal-blue gradient waves, orange-yellow highlights, dan pastel glass surface.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag">Employee Self-Service</span>
+                <span class="tag alt">Talent Intelligence</span>
+                <span class="tag warn">Portfolio Ready</span>
+              </div>
+            </div>
+
+            <div class="gallery">
+              <figure class="device">
+                <img src="../build/ui-audit/login-page-collapsed-iphone14.png" alt="Login One People" />
+                <figcaption><strong>Login Entry</strong>Gerbang awal aplikasi dengan konfigurasi server enterprise.</figcaption>
+              </figure>
+              <figure class="device">
+                <img src="../build/ui-audit/theme2-home-iphone14.png" alt="Beranda One People" />
+                <figcaption><strong>Modern Dashboard</strong>Ringkas, informatif, dan langsung actionable.</figcaption>
+              </figure>
+              <figure class="device">
+                <img src="../build/ui-audit/skill-iphone14promax.png" alt="Skill inventory One People" />
+                <figcaption><strong>Talent Layer</strong>Skill Inventory untuk visibilitas kapabilitas internal.</figcaption>
+              </figure>
+              <figure class="device">
+                <img src="../build/ui-audit/theme2-ai-iphone14.png" alt="AI HR Assistant One People" />
+                <figcaption><strong>AI Layer</strong>Asisten HR untuk FAQ, rekomendasi, dan guidance.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="slide">
+      <article class="card">
+        <div class="card-inner">
+          <div class="topline">
+            <div class="eyebrow">Product Scope</div>
+            <div class="slide-number">02 / 09</div>
+          </div>
+
+          <div>
+            <h2>Strategic Scope of the One People Platform</h2>
+            <p class="lead">One People dirancang untuk bergerak dari sekadar aplikasi administrasi menjadi platform HR mobile yang menghubungkan operasional, employee experience, dan pengembangan talenta internal.</p>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric">
+              <div class="metric-value">01</div>
+              <div class="metric-label">Secure entry flow dengan login, server URL management, dan logout flow yang natural untuk skenario enterprise.</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">02</div>
+              <div class="metric-label">Core HR modules untuk absensi, approval, laporan kehadiran, roster, aset, pesan, pengaturan, dan payroll.</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">03</div>
+              <div class="metric-label">Talent modules seperti Skill Inventory dan Internal Project Marketplace untuk visibilitas skill dan kolaborasi internal.</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">04</div>
+              <div class="metric-label">AI HR Assistant sebagai future-ready conversational layer berbasis konteks HR dan skill data.</div>
+            </div>
+          </div>
+
+          <div class="tag-row">
+            <span class="tag">SwiftUI</span>
+            <span class="tag alt">Modern UI System</span>
+            <span class="tag">Reusable Components</span>
+            <span class="tag alt">Enterprise Narrative</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="slide">
+      <article class="card">
+        <div class="card-inner">
+          <div class="topline">
+            <div class="eyebrow">Access Flow</div>
+            <div class="slide-number">03 / 09</div>
+          </div>
+
+          <div>
+            <h2>Login, Server Setup, and Session Control</h2>
+            <p class="lead">Aplikasi dimulai dari login page, dengan pengaturan server yang rapi dan dapat di-expand saat diperlukan. Alur logout juga dikembalikan langsung ke login page agar sesi pengguna terasa aman dan jelas.</p>
+          </div>
+
+          <div class="gallery three">
+            <figure class="device">
+              <img src="../build/ui-audit/login-page-collapsed-iphone14.png" alt="Login page One People" />
+              <figcaption><strong>Login Screen</strong>Tampilan awal yang bersih dengan server setting tersembunyi secara default.</figcaption>
+            </figure>
+            <figure class="device">
+              <img src="../build/ui-audit/settings-server-sheet-iphone14.png" alt="Server settings One People" />
+              <figcaption><strong>Server Management</strong>Endpoint server dapat diatur dari login page maupun menu Pengaturan.</figcaption>
+            </figure>
+            <figure class="device">
+              <img src="../build/ui-audit/logout-direct-to-login-iphone14.png" alt="Logout One People" />
+              <figcaption><strong>Logout Response</strong>Tap pada aksi keluar langsung mengembalikan user ke login page.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="slide">
+      <article class="card">
+        <div class="card-inner">
+          <div class="topline">
+            <div class="eyebrow">Core Navigation</div>
+            <div class="slide-number">04 / 09</div>
+          </div>
+
+          <div>
+            <h2>Main User Journey Across the One People App</h2>
+            <p class="lead">Beranda menjadi pusat aktivitas, sementara menu lengkap, akun, pengaturan, dan pesan membentuk pengalaman mobile yang terasa utuh untuk operasional harian karyawan.</p>
+          </div>
+
+          <div class="gallery">
+            <figure class="device">
+              <img src="../build/ui-audit/theme2-home-iphone14.png" alt="Home One People" />
+              <figcaption><strong>Beranda</strong>Status absensi, shortcut utama, banner, dan pengumuman dalam satu layar.</figcaption>
+            </figure>
+            <figure class="device">
+              <img src="../build/onepeople-feature-menu.png" alt="Semua menu One People" />
+              <figcaption><strong>Semua Menu</strong>Akses langsung ke seluruh modul One People dalam overlay yang mudah dipindai.</figcaption>
+            </figure>
+            <figure class="device">
+              <img src="../build/ui-audit/theme2-account-iphone14.png" alt="Akun One People" />
+              <figcaption><strong>Akun</strong>Struktur data personal dan perusahaan disusun mobile-first dan rapi.</figcaption>
+            </figure>
+            <figure class="device">
+              <img src="../build/ui-audit/settings-iphone14-refined.png" alt="Pengaturan One People" />
+              <figcaption><strong>Pengaturan</strong>Ubah sandi, server, troubleshooting, dan biometric dalam layout konsisten.</figcaption>
+            </figure>
+          </div>
+
+          <div class="gallery three">
+            <figure class="device">
+              <img src="../build/ui-audit/messages-iphone14-refined-2.png" alt="Pesan One People" />
+              <figcaption><strong>Pesan</strong>Area komunikasi internal dan notifikasi sistem.</figcaption>
+            </figure>
+            <figure class="device">
+              <img src="../build/ui-audit/home-iphoneSE-refined.png" alt="Home iPhone SE One People" />
+              <figcaption><strong>Compact Device Fit</strong>Konten tetap terbaca dan stabil pada layar lebih kecil.</figcaption>
+            </figure>
+            <figure class="device">
+              <img src="../build/ui-audit/home-ipadAir-final-2.png" alt="Home iPad One People" />
+              <figcaption><strong>Tablet Ready</strong>Layout tetap proporsional untuk kebutuhan device yang lebih lebar.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="slide">
+      <article class="card">
+        <div class="card-inner">
+          <div class="topline">
+            <div class="eyebrow">Attendance Suite</div>
+            <div class="slide-number">05 / 09</div>
+          </div>
+
+          <div>
+            <h2>Attendance, Approval, and Presence Reporting</h2>
+            <p class="lead">Modul kehadiran One People tidak hanya menampilkan data, tetapi membentuk satu alur operasional lengkap dari check-in, selfie validation, approval, hingga reporting calendar dan roster.</p>
+          </div>
+
+          <div class="gallery three">
+            <figure class="device">
+              <img src="../build/ui-audit/attendance-summary-iphone14promax.png" alt="Attendance summary One People" />
+              <figcaption><strong>Attendance Summary</strong>Statistik periode dan aksi check-in yang jelas.</figcaption>
+            </figure>
+            <figure class="device">
+              <img src="../build/ui-audit/attendance-checkin-iphone14promax.png" alt="Attendance timeline One People" />
+              <figcaption><strong>Check-In Timeline</strong>Riwayat check-in dan check-out dengan struktur yang mudah ditelusuri.</figcaption>
+            </figure>
+            <figure class="device">
+              <img src="../build/onepeople-feature-selfie-checkin.png" alt="Selfie attendance One People" />
+              <figcaption><strong>Selfie Validation</strong>Validasi visual saat absensi untuk memperkuat akuntabilitas kehadiran.</figcaption>
+            </figure>
+            <figure class="device">
+              <img src="../build/onepeople-feature-approval.png" alt="Approval One People" />
+              <figcaption><strong>Approval</strong>Waiting approval dan history untuk alur manager review.</figcaption>
+            </figure>
+            <figure class="device">
+              <img src="../build/onepeople-feature-report-calendar.png" alt="Attendance report calendar One People" />
+              <figcaption><strong>Report Calendar</strong>Visual kalender kehadiran untuk monitoring cepat.</figcaption>
+            </figure>
+            <figure class="device">
+              <img src="../build/onepeople-feature-report-table.png" alt="Attendance report table One People" />
+              <figcaption><strong>Report Table</strong>Detail tabel untuk analisis kehadiran yang lebih operasional.</figcaption>
+            </figure>
+          </div>
+
+          <div class="gallery three">
+            <figure class="device">
+              <img src="../build/onepeople-feature-roster.png" alt="Roster One People" />
+              <figcaption><strong>Roster</strong>Kalender roster dengan penanda hadir dan off.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="slide">
+      <article class="card">
+        <div class="card-inner">
+          <div class="topline">
+            <div class="eyebrow">HR Services</div>
+            <div class="slide-number">06 / 09</div>
+          </div>
+
+          <div>
+            <h2>Asset Tracking and Payroll Experience</h2>
+            <p class="lead">Selain kehadiran, One People juga memperkuat layanan self-service melalui pengelolaan aset dan payroll view yang lebih informatif dan siap dikembangkan ke attachment maupun approval flow.</p>
+          </div>
+
+          <div class="two-col">
+            <figure class="device">
+              <img src="../build/onepeople-feature-asset.png" alt="Asset One People" />
+              <figcaption><strong>Asset Management</strong>Menampilkan daftar aset, kategori, dan jejak transfer secara ringkas.</figcaption>
+            </figure>
+
+            <div class="panel payroll-mock">
+              <div class="phone-ui">
+                <div class="phone-body">
+                  <div class="phone-header">
+                    <span>09.26</span>
+                    <span>Slip Gaji</span>
+                  </div>
+
+                  <div class="pay-card">
+                    <div class="label">Gaji Bersih</div>
+                    <div class="amount">Rp 10 Juta</div>
+                    <div class="label">Periode Maret 2026</div>
+                  </div>
+
+                  <div class="sheet">
+                    <div class="row"><span>Gaji Pokok</span><strong>Rp 8.500.000</strong></div>
+                    <div class="row"><span>Tunjangan Jabatan</span><strong>Rp 2.000.000</strong></div>
+                    <div class="row"><span>Tunjangan Operasional</span><strong>Rp 1.650.000</strong></div>
+                    <div class="row total"><span>Total Penghasilan</span><strong>Rp 12.150.000</strong></div>
+                  </div>
+
+                  <div class="sheet">
+                    <div class="row"><span>PPh 21</span><strong>Rp 350.000</strong></div>
+                    <div class="row"><span>JHT + JP + BPJS</span><strong>Rp 340.000</strong></div>
+                    <div class="row"><span>Potongan Kehadiran</span><strong>Rp 1.460.000</strong></div>
+                    <div class="row total"><span>Total Potongan</span><strong>Rp 2.150.000</strong></div>
+                  </div>
+                </div>
+              </div>
+              <p class="muted"><strong>Payroll Mockup</strong><br />Nominal halaman gaji sudah disesuaikan menjadi <strong>Rp. 10.000.000,00</strong> agar sejalan dengan data mock terbaru aplikasi.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="slide">
+      <article class="card">
+        <div class="card-inner">
+          <div class="topline">
+            <div class="eyebrow">Talent & AI</div>
+            <div class="slide-number">07 / 09</div>
+          </div>
+
+          <div>
+            <h2>Talent Intelligence and AI-Driven Experience</h2>
+            <p class="lead">One People berkembang lebih jauh dari aplikasi HR operasional menjadi platform yang membantu HR dan bisnis memahami talent internal, membuka proyek lintas fungsi, dan memberi guidance melalui AI HR Assistant.</p>
+          </div>
+
+          <div class="gallery three">
+            <figure class="device">
+              <img src="../build/ui-audit/skill-iphone14promax.png" alt="Skill inventory One People" />
+              <figcaption><strong>Skill Inventory</strong>Searchable talent profile dengan hard skill, soft skill, sertifikasi, dan career interest.</figcaption>
+            </figure>
+            <figure class="device">
+              <img src="../build/ui-audit/project-iphone14promax.png" alt="Project marketplace One People" />
+              <figcaption><strong>Internal Project Marketplace</strong>Project listing, applicant review, dan skill-match recommendation untuk kolaborasi internal.</figcaption>
+            </figure>
+            <figure class="device">
+              <img src="../build/ui-audit/theme2-ai-iphone14.png" alt="AI HR Assistant One People" />
+              <figcaption><strong>AI HR Assistant</strong>FAQ HR, rekomendasi skill development, dan rekomendasi proyek yang kontekstual.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="slide">
+      <article class="card">
+        <div class="card-inner">
+          <div class="topline">
+            <div class="eyebrow">Design System</div>
+            <div class="slide-number">08 / 09</div>
+          </div>
+
+          <div>
+            <h2>Modern Visual Direction for a Company Portfolio</h2>
+            <p class="lead">Seluruh tampilan aplikasi dipoles ke arah yang lebih modern dan presentable: smooth gradients, pastel enterprise palette, paper-cut inspired layers, dan konsistensi komponen untuk device yang berbeda.</p>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric">
+              <div class="metric-value">Teal</div>
+              <div class="metric-label">Identitas visual baru memakai teal-blue gradient waves untuk menggantikan nuansa hijau lama yang terasa lebih dated.</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">Warm</div>
+              <div class="metric-label">Highlight orange dan yellow memberi aksen yang lebih human, friendly, dan tetap enterprise-friendly.</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">Clear</div>
+              <div class="metric-label">Typographic hierarchy, spacing, dan content width dirapikan agar nyaman dibaca di iPhone kecil, Pro Max, maupun iPad.</div>
+            </div>
+            <div class="metric">
+              <div class="metric-value">Ready</div>
+              <div class="metric-label">Tampilan ini lebih layak dipakai untuk materi company profile, internal showcase, dan presentasi produk digital perusahaan.</div>
+            </div>
+          </div>
+
+          <div class="gallery three">
+            <figure class="device wide">
+              <img src="../build/ui-audit/home-iphone14promax.png" alt="One People iPhone Pro Max" />
+              <figcaption><strong>Large Screen Fit</strong>Tetap proporsional di device yang lebih lebar.</figcaption>
+            </figure>
+            <figure class="device wide">
+              <img src="../build/ui-audit/home-ipadAir-final-2.png" alt="One People iPad" />
+              <figcaption><strong>Tablet Adaptation</strong>Konten tidak terasa kosong dan tetap seimbang di iPad.</figcaption>
+            </figure>
+            <figure class="device wide">
+              <img src="../build/ui-audit/home-iphoneSE-refined.png" alt="One People iPhone SE" />
+              <figcaption><strong>Compact Screen Fit</strong>Komponen tetap rapi di layar kecil.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="slide">
+      <article class="card">
+        <div class="card-inner">
+          <div class="topline">
+            <div class="eyebrow">Closing</div>
+            <div class="slide-number">09 / 09</div>
+          </div>
+
+          <div>
+            <h2>One People Mobile as a Professional Portfolio Asset for PT. Ekozer</h2>
+            <p class="lead">One People Mobile kini tidak hanya menunjukkan cakupan fitur yang kuat, tetapi juga membawakan visual dan narasi produk yang lebih matang. Hasilnya adalah materi presentasi yang jauh lebih siap dipakai untuk stakeholder internal, business development, maupun portofolio perusahaan.</p>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div><strong>Operational Depth</strong>Absensi, approval, laporan kehadiran, aset, settings, pesan, dan payroll hadir sebagai modul self-service yang nyata.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div><strong>Talent Innovation</strong>Skill Inventory dan Project Marketplace membawa One People ke level talent platform yang lebih strategis.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="dot"></div>
+              <div><strong>Future Ready</strong>AI HR Assistant membuka arah pengembangan menuju produk HR digital yang lebih intelligent dan scalable.</div>
+            </div>
+          </div>
+
+          <div class="closing">
+            <p class="lead">Deck ini dapat langsung dipakai untuk presentasi perusahaan, company profile digital, atau showcase portfolio produk internal PT. Ekozer.</p>
+            <div class="eyebrow">One People Portfolio Deck</div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

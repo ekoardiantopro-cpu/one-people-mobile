@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		001000000000000000000001 /* JiixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002000000000000000000001 /* JiixApp.swift */; };
+		001000000000000000000001 /* OnePeopleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002000000000000000000001 /* OnePeopleApp.swift */; };
 		001000000000000000000002 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002000000000000000000002 /* Track.swift */; };
 		001000000000000000000003 /* MusicCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002000000000000000000003 /* MusicCatalog.swift */; };
 		001000000000000000000004 /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002000000000000000000004 /* PlayerController.swift */; };
@@ -19,10 +19,13 @@
 		00100000000000000000000A /* TrackRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00200000000000000000000A /* TrackRow.swift */; };
 		00100000000000000000000B /* MiniPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00200000000000000000000B /* MiniPlayerView.swift */; };
 		00100000000000000000000C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00200000000000000000000C /* Assets.xcassets */; };
+		00100000000000000000000D /* FeatureScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00200000000000000000000E /* FeatureScreens.swift */; };
+		00100000000000000000000E /* TalentFeatureScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00200000000000000000000F /* TalentFeatureScreens.swift */; };
+		00100000000000000000000F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002000000000000000000010 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		002000000000000000000001 /* JiixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JiixApp.swift; sourceTree = "<group>"; };
+		002000000000000000000001 /* OnePeopleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePeopleApp.swift; sourceTree = "<group>"; };
 		002000000000000000000002 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		002000000000000000000003 /* MusicCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCatalog.swift; sourceTree = "<group>"; };
 		002000000000000000000004 /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
@@ -34,7 +37,10 @@
 		00200000000000000000000A /* TrackRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackRow.swift; sourceTree = "<group>"; };
 		00200000000000000000000B /* MiniPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayerView.swift; sourceTree = "<group>"; };
 		00200000000000000000000C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		00200000000000000000000D /* Jiix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = Jiix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00200000000000000000000D /* One People.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = "One People.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		00200000000000000000000E /* FeatureScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureScreens.swift; sourceTree = "<group>"; };
+		00200000000000000000000F /* TalentFeatureScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalentFeatureScreens.swift; sourceTree = "<group>"; };
+		002000000000000000000010 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,27 +57,27 @@
 		004000000000000000000001 = {
 			isa = PBXGroup;
 			children = (
-				004000000000000000000002 /* Jiix */,
+				004000000000000000000002 /* One People */,
 				004000000000000000000003 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		004000000000000000000002 /* Jiix */ = {
+		004000000000000000000002 /* One People */ = {
 			isa = PBXGroup;
 			children = (
-				002000000000000000000001 /* JiixApp.swift */,
+				002000000000000000000001 /* OnePeopleApp.swift */,
 				004000000000000000000004 /* Models */,
 				004000000000000000000005 /* Player */,
 				004000000000000000000006 /* Views */,
 				004000000000000000000007 /* Resources */,
 			);
-			path = Jiix;
+			path = OnePeople;
 			sourceTree = "<group>";
 		};
 		004000000000000000000003 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				00200000000000000000000D /* Jiix.app */,
+				00200000000000000000000D /* One People.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +107,9 @@
 				002000000000000000000007 /* SearchView.swift */,
 				002000000000000000000008 /* LibraryView.swift */,
 				002000000000000000000009 /* NowPlayingView.swift */,
+				00200000000000000000000E /* FeatureScreens.swift */,
+				00200000000000000000000F /* TalentFeatureScreens.swift */,
+				002000000000000000000010 /* LoginView.swift */,
 				004000000000000000000008 /* Components */,
 			);
 			path = Views;
@@ -126,9 +135,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		005000000000000000000001 /* Jiix */ = {
+		005000000000000000000001 /* One People */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 006000000000000000000002 /* Build configuration list for PBXNativeTarget "Jiix" */;
+			buildConfigurationList = 006000000000000000000002 /* Build configuration list for PBXNativeTarget "One People" */;
 			buildPhases = (
 				003000000000000000000002 /* Sources */,
 				003000000000000000000001 /* Frameworks */,
@@ -138,9 +147,9 @@
 			);
 			dependencies = (
 			);
-			name = Jiix;
-			productName = Jiix;
-			productReference = 00200000000000000000000D /* Jiix.app */;
+			name = "One People";
+			productName = "One People";
+			productReference = 00200000000000000000000D /* One People.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -158,7 +167,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 006000000000000000000003 /* Build configuration list for PBXProject "Jiix" */;
+			buildConfigurationList = 006000000000000000000003 /* Build configuration list for PBXProject "One People" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -171,7 +180,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				005000000000000000000001 /* Jiix */,
+				005000000000000000000001 /* One People */,
 			);
 		};
 /* End PBXProject section */
@@ -192,7 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				001000000000000000000001 /* JiixApp.swift in Sources */,
+				001000000000000000000001 /* OnePeopleApp.swift in Sources */,
 				001000000000000000000002 /* Track.swift in Sources */,
 				001000000000000000000003 /* MusicCatalog.swift in Sources */,
 				001000000000000000000004 /* PlayerController.swift in Sources */,
@@ -203,6 +212,9 @@
 				001000000000000000000009 /* NowPlayingView.swift in Sources */,
 				00100000000000000000000A /* TrackRow.swift in Sources */,
 				00100000000000000000000B /* MiniPlayerView.swift in Sources */,
+				00100000000000000000000D /* FeatureScreens.swift in Sources */,
+				00100000000000000000000E /* TalentFeatureScreens.swift in Sources */,
+				00100000000000000000000F /* LoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,29 +285,31 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Jiix/Resources\"";
+					DEVELOPMENT_ASSET_PATHS = "\"OnePeople/Resources\"";
 				DEVELOPMENT_TEAM = N2FFJC9DG4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Jiix Music";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Jiix does not record audio.";
+				INFOPLIST_KEY_CFBundleDisplayName = "One People";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Selfie diperlukan untuk proses check in dan check out absensi.";
+					INFOPLIST_KEY_NSMicrophoneUsageDescription = "One People does not record audio.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ekozer.jiix;
+					PRODUCT_BUNDLE_IDENTIFIER = com.ekozer.onepeople;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -308,32 +322,34 @@
 				DEVELOPMENT_TEAM = N2FFJC9DG4;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Jiix Music";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
-				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Jiix does not record audio.";
+				INFOPLIST_KEY_CFBundleDisplayName = "One People";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.business";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Selfie diperlukan untuk proses check in dan check out absensi.";
+					INFOPLIST_KEY_NSMicrophoneUsageDescription = "One People does not record audio.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ekozer.jiix;
+					PRODUCT_BUNDLE_IDENTIFIER = com.ekozer.onepeople;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		006000000000000000000002 /* Build configuration list for PBXNativeTarget "Jiix" */ = {
+		006000000000000000000002 /* Build configuration list for PBXNativeTarget "One People" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				006000000000000000000006 /* Debug */,
@@ -342,7 +358,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		006000000000000000000003 /* Build configuration list for PBXProject "Jiix" */ = {
+		006000000000000000000003 /* Build configuration list for PBXProject "One People" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				006000000000000000000004 /* Debug */,

@@ -3,20 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>One People Visual Gallery</title>
+  <title>One People Live Demo</title>
   <style>
     :root {
-      --ink: #17314e;
-      --muted: #5f7387;
-      --line: rgba(23, 49, 78, 0.08);
-      --surface: rgba(255, 255, 255, 0.72);
-      --surface-strong: rgba(255, 255, 255, 0.9);
+      --ink: #16324f;
+      --ink-soft: #5c7388;
       --teal: #2aa6ba;
       --blue: #4f80e1;
+      --deep-blue: #2854ae;
       --orange: #ffb67a;
       --yellow: #ffe39d;
-      --shadow: 0 24px 60px rgba(34, 84, 174, 0.12);
-      --radius: 28px;
+      --surface: rgba(255, 255, 255, 0.76);
+      --surface-strong: rgba(255, 255, 255, 0.92);
+      --line: rgba(22, 50, 79, 0.08);
+      --shadow: 0 28px 70px rgba(28, 68, 121, 0.14);
+      --phone-shell: #0f1724;
+      --phone-screen: #f8fbff;
+      --success: #1ea672;
+      --danger: #db4860;
+      --warning: #cf7a2f;
     }
 
     * {
@@ -25,27 +30,27 @@
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top right, rgba(79, 128, 225, 0.28), transparent 28%),
-        radial-gradient(circle at bottom left, rgba(255, 182, 122, 0.34), transparent 24%),
-        linear-gradient(135deg, #f6fbff 0%, #eef9fb 42%, #fffaf2 100%);
+        radial-gradient(circle at top right, rgba(79, 128, 225, 0.26), transparent 24%),
+        radial-gradient(circle at bottom left, rgba(255, 182, 122, 0.24), transparent 24%),
+        linear-gradient(135deg, #f7fcff 0%, #eef9fb 45%, #fff9f0 100%);
     }
 
     .shell {
-      width: min(1200px, calc(100% - 40px));
+      width: min(1300px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 40px 0 64px;
+      padding: 28px 0 46px;
     }
 
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 36px;
-      border-radius: 36px;
+      padding: 32px;
+      border-radius: 34px;
       background: linear-gradient(135deg, rgba(255,255,255,0.78), rgba(255,255,255,0.94));
-      border: 1px solid rgba(255,255,255,0.75);
+      border: 1px solid rgba(255,255,255,0.8);
       box-shadow: var(--shadow);
       backdrop-filter: blur(18px);
     }
@@ -59,33 +64,33 @@
     }
 
     .hero::before {
-      width: 320px;
-      height: 320px;
-      top: -140px;
-      right: -60px;
-      background: linear-gradient(135deg, rgba(79, 128, 225, 0.26), rgba(42, 166, 186, 0.34));
+      width: 340px;
+      height: 340px;
+      top: -170px;
+      right: -80px;
+      background: linear-gradient(145deg, rgba(79, 128, 225, 0.28), rgba(42, 166, 186, 0.32));
     }
 
     .hero::after {
-      width: 260px;
-      height: 260px;
-      bottom: -150px;
-      left: -70px;
-      background: linear-gradient(135deg, rgba(255, 182, 122, 0.28), rgba(255, 227, 157, 0.34));
+      width: 240px;
+      height: 240px;
+      bottom: -140px;
+      left: -40px;
+      background: linear-gradient(145deg, rgba(255, 182, 122, 0.24), rgba(255, 227, 157, 0.3));
     }
 
     .eyebrow {
-      margin: 0 0 12px;
+      margin: 0 0 10px;
       font-size: 13px;
       font-weight: 800;
-      letter-spacing: 0.12em;
       text-transform: uppercase;
+      letter-spacing: 0.13em;
       color: var(--teal);
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(34px, 5vw, 58px);
+      font-size: clamp(34px, 5.4vw, 58px);
       line-height: 0.98;
       letter-spacing: -0.04em;
     }
@@ -93,23 +98,23 @@
     .lead {
       max-width: 760px;
       margin: 16px 0 0;
+      color: var(--ink-soft);
       font-size: 18px;
       line-height: 1.7;
-      color: var(--muted);
     }
 
     .hero-meta {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 14px;
-      margin-top: 28px;
+      margin-top: 24px;
     }
 
     .meta-card {
       padding: 16px 18px;
       border-radius: 22px;
       background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.76);
     }
 
     .meta-card strong {
@@ -119,90 +124,556 @@
     }
 
     .meta-card span {
+      color: var(--ink-soft);
       font-size: 14px;
-      color: var(--muted);
     }
 
-    .section-title {
-      margin: 42px 0 16px;
-      font-size: 28px;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-    }
-
-    .gallery {
+    .workspace {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 22px;
+      grid-template-columns: 420px minmax(320px, 1fr);
+      gap: 28px;
+      margin-top: 28px;
+      align-items: start;
     }
 
-    .card {
-      overflow: hidden;
-      border-radius: var(--radius);
-      background: var(--surface);
-      border: 1px solid rgba(255,255,255,0.78);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(16px);
+    .phone {
+      background: linear-gradient(180deg, #182332, #0f1724 62%, #1a2432);
+      border-radius: 42px;
+      padding: 16px;
+      box-shadow: 0 32px 70px rgba(9, 15, 22, 0.24);
+      position: sticky;
+      top: 18px;
     }
 
-    .frame {
-      padding: 18px 18px 10px;
-      background:
-        linear-gradient(180deg, rgba(79,128,225,0.08), rgba(255,255,255,0)),
-        linear-gradient(135deg, rgba(255,255,255,0.92), rgba(248,252,255,0.78));
+    .notch {
+      width: 118px;
+      height: 28px;
+      margin: 0 auto 12px;
+      border-radius: 999px;
+      background: rgba(6, 10, 14, 0.94);
     }
 
     .screen {
+      height: 844px;
+      background:
+        radial-gradient(circle at top right, rgba(79, 128, 225, 0.2), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(255, 182, 122, 0.16), transparent 20%),
+        linear-gradient(135deg, #f7fcff 0%, #eef9fb 45%, #fffaf2 100%);
+      border-radius: 32px;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.16);
+    }
+
+    .statusbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px 8px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .screen-scroll {
+      height: calc(100% - 74px);
+      overflow: auto;
+      padding: 6px 18px 108px;
+      scrollbar-width: none;
+    }
+
+    .screen-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tabs {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      padding: 12px 10px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.82);
+      box-shadow: 0 18px 38px rgba(30, 52, 91, 0.14);
+      backdrop-filter: blur(16px);
+    }
+
+    .tab {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: rgba(22, 50, 79, 0.48);
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.25;
+      cursor: pointer;
+      display: grid;
+      gap: 5px;
+      justify-items: center;
+      padding: 4px 0;
+    }
+
+    .tab span:first-child {
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+    }
+
+    .tab.active {
+      color: var(--teal);
+    }
+
+    .tab.active span:first-child {
+      background: rgba(42, 166, 186, 0.12);
+    }
+
+    .panel {
+      padding: 26px;
+      border-radius: 34px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.94));
+      border: 1px solid rgba(255,255,255,0.84);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .panel h2 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    .panel p {
+      margin: 10px 0 0;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .control-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .chip-btn {
+      appearance: none;
+      border: 1px solid rgba(79, 128, 225, 0.12);
+      background: rgba(255,255,255,0.78);
+      color: var(--ink);
+      border-radius: 18px;
+      padding: 14px 16px;
+      text-align: left;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+    }
+
+    .chip-btn strong {
       display: block;
-      width: 100%;
-      border-radius: 24px;
-      border: 10px solid #0f1724;
-      box-shadow: 0 18px 36px rgba(15, 23, 36, 0.14);
-      background: #fff;
+      margin-bottom: 3px;
+      font-size: 15px;
     }
 
-    .copy {
-      padding: 0 20px 22px;
+    .chip-btn span {
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.4;
     }
 
-    .copy h3 {
-      margin: 6px 0 8px;
+    .chip-btn.active {
+      border-color: rgba(42, 166, 186, 0.34);
+      box-shadow: 0 14px 24px rgba(79, 128, 225, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .detail-card {
+      border-radius: 28px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(255,255,255,0.84);
+      padding: 20px;
+    }
+
+    .detail-card h3 {
+      margin: 0 0 14px;
       font-size: 20px;
       letter-spacing: -0.02em;
     }
 
-    .copy p {
+    .list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .row {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(244, 250, 255, 0.9);
+      border: 1px solid rgba(22, 50, 79, 0.06);
+    }
+
+    .row strong,
+    .metric strong {
+      display: block;
+      font-size: 14px;
+    }
+
+    .row span,
+    .metric span {
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(22, 50, 79, 0.06);
+    }
+
+    .metric b {
+      display: block;
+      margin-top: 6px;
+      font-size: 24px;
+      letter-spacing: -0.03em;
+    }
+
+    .subnav {
+      margin-top: 16px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .mini-link {
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .screen-card {
+      border-radius: 28px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(255,255,255,0.84);
+      padding: 18px;
+      box-shadow: 0 16px 32px rgba(28, 68, 121, 0.08);
+    }
+
+    .welcome {
+      margin-bottom: 18px;
+      padding: 20px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 35%),
+        linear-gradient(135deg, rgba(42, 166, 186, 0.98), rgba(79, 128, 225, 0.96));
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .welcome::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -60px;
+      top: -60px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .welcome small {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      opacity: 0.92;
+    }
+
+    .welcome h3 {
       margin: 0;
-      font-size: 14px;
-      line-height: 1.65;
-      color: var(--muted);
+      font-size: 33px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
     }
 
-    .footer {
-      margin-top: 34px;
-      padding: 18px 20px;
+    .welcome p {
+      margin: 10px 0 0;
+      color: rgba(255,255,255,0.84);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .identity {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    .avatar {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.28);
+      border: 3px solid rgba(255,255,255,0.44);
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+    }
+
+    .check-card {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 12px;
+      align-items: center;
+      padding: 16px;
+      margin-bottom: 16px;
       border-radius: 24px;
-      background: var(--surface-strong);
-      border: 1px solid rgba(255,255,255,0.78);
-      box-shadow: var(--shadow);
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
+      background: rgba(255,255,255,0.86);
+      box-shadow: 0 16px 28px rgba(28, 68, 121, 0.08);
     }
 
-    @media (max-width: 720px) {
-      .shell {
-        width: min(100% - 24px, 1200px);
-        padding-top: 18px;
+    .check-card button,
+    .cta,
+    .login-button {
+      appearance: none;
+      border: 0;
+      border-radius: 18px;
+      color: #fff;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--teal), var(--blue));
+      box-shadow: 0 16px 28px rgba(42, 166, 186, 0.24);
+    }
+
+    .check-card button {
+      padding: 16px 0;
+    }
+
+    .shortcut-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .shortcut {
+      display: grid;
+      gap: 8px;
+      justify-items: center;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .shortcut-badge {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      box-shadow: 0 14px 22px rgba(28, 68, 121, 0.08);
+    }
+
+    .announcement {
+      overflow: hidden;
+      border-radius: 26px;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, rgba(42, 166, 186, 0.98), rgba(111, 215, 215, 0.96));
+      color: #fff;
+      padding: 20px;
+    }
+
+    .announcement h4 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .announcement p {
+      margin: 0;
+      color: rgba(255,255,255,0.84);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .login-screen {
+      display: grid;
+      gap: 16px;
+    }
+
+    .login-title {
+      font-size: 36px;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin: 12px 0 0;
+    }
+
+    .field,
+    .server-box {
+      padding: 14px 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(22, 50, 79, 0.08);
+      color: var(--ink-soft);
+      font-size: 14px;
+    }
+
+    .server-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 800;
+      color: var(--teal);
+    }
+
+    .server-note {
+      margin-top: 6px;
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .login-button {
+      padding: 16px 18px;
+      text-align: center;
+    }
+
+    .list-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(22, 50, 79, 0.07);
+      font-size: 13px;
+    }
+
+    .list-line:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .list-line b {
+      font-size: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .tag.success {
+      color: var(--success);
+      background: rgba(30, 166, 114, 0.12);
+    }
+
+    .tag.pending {
+      color: var(--warning);
+      background: rgba(207, 122, 47, 0.12);
+    }
+
+    .tag.info {
+      color: var(--teal);
+      background: rgba(42, 166, 186, 0.12);
+    }
+
+    .chat {
+      display: grid;
+      gap: 12px;
+    }
+
+    .bubble {
+      max-width: 84%;
+      padding: 14px 16px;
+      border-radius: 20px;
+      line-height: 1.55;
+      font-size: 13px;
+      box-shadow: 0 10px 24px rgba(28, 68, 121, 0.08);
+    }
+
+    .bubble.user {
+      margin-left: auto;
+      background: linear-gradient(135deg, var(--teal), var(--blue));
+      color: #fff;
+      border-bottom-right-radius: 8px;
+    }
+
+    .bubble.assistant {
+      background: rgba(255,255,255,0.9);
+      color: var(--ink);
+      border-bottom-left-radius: 8px;
+    }
+
+    .screen-empty {
+      padding: 18px;
+      border-radius: 22px;
+      text-align: center;
+      background: rgba(255,255,255,0.82);
+      color: var(--ink-soft);
+      font-size: 13px;
+    }
+
+    @media (max-width: 1080px) {
+      .workspace,
+      .detail-grid {
+        grid-template-columns: 1fr;
       }
 
-      .hero {
-        padding: 24px;
+      .phone {
+        position: static;
+        width: min(100%, 420px);
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .shell {
+        width: min(100% - 18px, 1280px);
+        padding-top: 14px;
+      }
+
+      .hero,
+      .panel {
+        padding: 22px;
         border-radius: 28px;
       }
 
-      .lead {
-        font-size: 16px;
+      .screen {
+        height: 820px;
+      }
+
+      .shortcut-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
   </style>
@@ -210,144 +681,498 @@
 <body>
   <main class="shell">
     <section class="hero">
-      <p class="eyebrow">Portfolio Visual</p>
-      <h1>One People Mobile App</h1>
+      <p class="eyebrow">Live Web Demo</p>
+      <h1>One People App Experience</h1>
       <p class="lead">
-        Galeri ini merangkum tampilan utama aplikasi <strong>One People</strong> sebagai platform employee self-service modern milik <strong>PT. Ekozer</strong>, mulai dari login, operasional HR, payroll, talent development, hingga AI HR Assistant.
+        Ini adalah demo interaktif berbasis web yang meniru pengalaman membuka aplikasi <strong>One People</strong>. Anda bisa berpindah screen utama, melihat alur login, dashboard, attendance, payroll, talent modules, dan AI HR Assistant seperti demo produk.
       </p>
       <div class="hero-meta">
         <div class="meta-card">
-          <strong>Platform</strong>
-          <span>iOS mobile application</span>
+          <strong>Use Case</strong>
+          <span>Demo produk, company profile, dan business presentation</span>
         </div>
         <div class="meta-card">
-          <strong>Positioning</strong>
-          <span>HR operations, talent, and employee experience</span>
+          <strong>Experience</strong>
+          <span>App-like, interactive, mobile-first, and GitHub Pages ready</span>
         </div>
         <div class="meta-card">
-          <strong>Visual Direction</strong>
-          <span>Teal-blue modern interface with warm accent layers</span>
+          <strong>Brand</strong>
+          <span>One People by PT. Ekozer</span>
         </div>
       </div>
     </section>
 
-    <h2 class="section-title">Feature Mockup Gallery</h2>
+    <section class="workspace">
+      <div class="phone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="statusbar">
+            <span id="phone-time">09.24</span>
+            <span>📶  📡  95%</span>
+          </div>
+          <div class="screen-scroll" id="screen-scroll"></div>
+          <div class="tabs" id="tabs"></div>
+        </div>
+      </div>
 
-    <section class="gallery">
-      <article class="card">
-        <div class="frame">
-          <img class="screen" src="./assets/one-people-suite/login.png" alt="Login One People" />
-        </div>
-        <div class="copy">
-          <h3>Login</h3>
-          <p>Gerbang awal aplikasi dengan input username, password, dan konfigurasi server yang rapi serta siap dipakai di lingkungan enterprise.</p>
-        </div>
-      </article>
+      <section class="panel">
+        <p class="eyebrow">Interactive Controls</p>
+        <h2 id="detail-title">Login & Session Flow</h2>
+        <p id="detail-lead">Pilih screen di bawah ini untuk melihat pengalaman aplikasi seperti demo mobile product, bukan sekadar galeri screenshot.</p>
 
-      <article class="card">
-        <div class="frame">
-          <img class="screen" src="./assets/one-people-suite/home.png" alt="Beranda One People" />
-        </div>
-        <div class="copy">
-          <h3>Dashboard</h3>
-          <p>Ringkasan identitas karyawan, status absensi, shortcut modul utama, dan akses cepat ke layanan HR harian dalam satu beranda.</p>
-        </div>
-      </article>
+        <div class="control-grid" id="controls"></div>
 
-      <article class="card">
-        <div class="frame">
-          <img class="screen" src="./assets/one-people-suite/account.png" alt="Akun One People" />
-        </div>
-        <div class="copy">
-          <h3>Akun</h3>
-          <p>Profil karyawan tersusun jelas untuk data pribadi, data perusahaan, alamat, kontak darurat, keluarga, dan pendidikan.</p>
-        </div>
-      </article>
+        <div class="detail-grid">
+          <article class="detail-card">
+            <h3>Ringkasan Flow</h3>
+            <div class="list" id="detail-list"></div>
+          </article>
 
-      <article class="card">
-        <div class="frame">
-          <img class="screen" src="./assets/one-people-suite/settings.png" alt="Pengaturan One People" />
+          <article class="detail-card">
+            <h3>Highlight</h3>
+            <div class="metric-grid" id="metric-grid"></div>
+            <div class="subnav">
+              <a class="mini-link" href="./one-people-gallery.html">Lihat galeri mockup</a>
+              <a class="mini-link" href="./portfolio-presentation.html">Buka portfolio deck</a>
+            </div>
+          </article>
         </div>
-        <div class="copy">
-          <h3>Pengaturan</h3>
-          <p>Area pengelolaan aplikasi untuk ubah kata sandi, ubah server, troubleshooting, dan pengaturan biometric secara terpusat.</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="frame">
-          <img class="screen" src="./assets/one-people-suite/messages.png" alt="Pesan One People" />
-        </div>
-        <div class="copy">
-          <h3>Pesan</h3>
-          <p>Pusat komunikasi internal untuk notifikasi HR, approval, pengingat operasional, dan distribusi informasi penting ke karyawan.</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="frame">
-          <img class="screen" src="./assets/one-people-suite/attendance.png" alt="Absensi One People" />
-        </div>
-        <div class="copy">
-          <h3>Absensi</h3>
-          <p>Monitoring kehadiran lengkap dengan summary, timeline, dan alur check in/check out yang siap dipadukan dengan selfie validation.</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="frame">
-          <img class="screen" src="./assets/one-people-suite/approval.png" alt="Approval One People" />
-        </div>
-        <div class="copy">
-          <h3>Approval</h3>
-          <p>Workflow persetujuan untuk izin, koreksi kehadiran, dan kebutuhan operasional lain dengan tampilan inbox yang mudah dipindai.</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="frame">
-          <img class="screen" src="./assets/one-people-suite/payslip.png" alt="Slip Gaji One People" />
-        </div>
-        <div class="copy">
-          <h3>Slip Gaji</h3>
-          <p>Visualisasi payroll yang menampilkan nominal gaji bersih, periode, komponen penghasilan, potongan, dan lampiran slip gaji.</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="frame">
-          <img class="screen" src="./assets/one-people-suite/skill-inventory.png" alt="Skill Inventory One People" />
-        </div>
-        <div class="copy">
-          <h3>Skill Inventory</h3>
-          <p>Inventaris skill karyawan untuk kebutuhan mapping kompetensi, pencarian talenta internal, dan perencanaan pelatihan perusahaan.</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="frame">
-          <img class="screen" src="./assets/one-people-suite/project-marketplace.png" alt="Project Marketplace One People" />
-        </div>
-        <div class="copy">
-          <h3>Project Marketplace</h3>
-          <p>Marketplace proyek internal agar karyawan bisa menemukan peluang lintas fungsi dan manajer dapat membangun tim berbasis skill match.</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="frame">
-          <img class="screen" src="./assets/one-people-suite/ai-assistant.png" alt="AI HR Assistant One People" />
-        </div>
-        <div class="copy">
-          <h3>AI HR Assistant</h3>
-          <p>Asisten HR berbasis AI untuk menjawab FAQ, memberi guidance administrasi, dan memberikan rekomendasi pelatihan maupun proyek internal.</p>
-        </div>
-      </article>
+      </section>
     </section>
-
-    <div class="footer">
-      Halaman ini dirancang sebagai galeri visual cepat untuk kebutuhan presentasi, portofolio perusahaan, dan review stakeholder. Jika diperlukan, galeri ini bisa dilanjutkan menjadi deck presentasi penuh atau versi PDF-ready.
-    </div>
   </main>
+
+  <script>
+    const shortcuts = [
+      { emoji: "👤", title: "Absensi", bg: "#FFF1D6", color: "#7A4E16" },
+      { emoji: "👜", title: "Izin", bg: "#FDE7F3", color: "#AE1972" },
+      { emoji: "📄", title: "Lap. Kehadiran", bg: "#FFE8E1", color: "#B3470D" },
+      { emoji: "✨", title: "AI HR", bg: "#EAF1FF", color: "#4F80E1" }
+    ];
+
+    const tabs = [
+      { id: "home", label: "Beranda", icon: "⌂" },
+      { id: "account", label: "Akun", icon: "◉" },
+      { id: "settings", label: "Pengaturan", icon: "⚙" },
+      { id: "messages", label: "Pesan", icon: "✉" },
+      { id: "logout", label: "Log Out", icon: "⇥" }
+    ];
+
+    const screens = {
+      login: {
+        title: "Login & Session Flow",
+        lead: "Demo login menampilkan alur enterprise yang rapi: set server dulu, lalu login dengan username dan password.",
+        metrics: [
+          { title: "Server URL", value: "hcm.ekozer.com", note: "Expandable setting" },
+          { title: "State", value: "Ready", note: "Session-aware login" },
+          { title: "Security", value: "Biometric Ready", note: "Future-friendly" },
+          { title: "UX", value: "Minimal", note: "Mobile-first form" }
+        ],
+        bullets: [
+          ["Pengaturan Server", "Server aktif disembunyikan default dan bisa di-expand saat diperlukan."],
+          ["Validasi Login", "Login baru aktif setelah server berhasil disimpan."],
+          ["Persistensi", "Server URL dan username terakhir dipertahankan untuk pengalaman berikutnya."],
+          ["Corporate Ready", "Cocok untuk environment multi-instance atau deployment per company server."]
+        ],
+        render() {
+          return `
+            <div class="login-screen">
+              <div class="welcome">
+                <small>Welcome back</small>
+                <h3>One People</h3>
+                <p>Masuk ke akun Anda untuk mengakses attendance, approval, payroll, dan layanan HR internal.</p>
+              </div>
+              <div class="screen-card">
+                <div class="server-box">
+                  <div class="server-head">
+                    <span>Pengaturan Server</span>
+                    <span>▾</span>
+                  </div>
+                  <div class="server-note">Tap untuk set server sebelum login. Server aktif: <strong>https://hcm.ekozer.com</strong></div>
+                </div>
+                <div class="field">Username: eko.ardianto</div>
+                <div class="field">Password: ••••••••••</div>
+                <div class="login-button">Masuk ke One People</div>
+              </div>
+              <div class="screen-card">
+                <strong style="display:block; margin-bottom:6px;">Server aktif tersimpan</strong>
+                <span style="color: var(--ink-soft); font-size:13px;">https://hcm.ekozer.com</span>
+              </div>
+            </div>
+          `;
+        }
+      },
+      home: {
+        title: "Dashboard & Daily Operations",
+        lead: "Beranda memadukan identitas karyawan, status absensi, shortcut utama, pengumuman, dan akses ke modul inti dalam satu layar kerja.",
+        metrics: [
+          { title: "Status Hari Ini", value: "Checked In", note: "07:58 WIB" },
+          { title: "Sisa Cuti", value: "8 Hari", note: "Annual leave" },
+          { title: "Overtime", value: "12.5 H", note: "This month" },
+          { title: "Payroll", value: "Ready", note: "Slip tersedia" }
+        ],
+        bullets: [
+          ["Check In Card", "Menampilkan status kehadiran harian sekaligus CTA utama untuk attendance."],
+          ["Shortcut Utama", "Absensi, Izin, Laporan Kehadiran, dan AI HR diletakkan di posisi cepat."],
+          ["Semua Menu", "Pengguna tetap punya akses ke seluruh modul lanjutan dari entry point utama."],
+          ["Announcement Area", "Banner pengumuman membantu penyebaran informasi operasional dan HR."]
+        ],
+        render() {
+          const shortcutHTML = shortcuts.map((item) => `
+            <div class="shortcut">
+              <div class="shortcut-badge" style="background:${item.bg}; color:${item.color};">${item.emoji}</div>
+              <span>${item.title}</span>
+            </div>
+          `).join("");
+
+          return `
+            <div class="welcome">
+              <small>Selamat Pagi</small>
+              <h3>Eko Ardianto</h3>
+              <div class="identity">
+                <div>
+                  <p>IT Support Officer - 0000000583</p>
+                </div>
+                <div class="avatar">👤</div>
+              </div>
+            </div>
+            <div class="check-card">
+              <div>
+                <strong style="display:block; font-size:14px;">Check In</strong>
+                <span style="color:#d73756; font-size:13px;">Belum Check In Hari ini</span>
+              </div>
+              <button>CHECK IN</button>
+            </div>
+            <div class="shortcut-grid">${shortcutHTML}</div>
+            <div class="announcement">
+              <h4>Important</h4>
+              <p>Pengumuman internal, update operasional, dan informasi HR bisa disampaikan dari area ini dengan tampilan yang lebih visual.</p>
+            </div>
+            <div class="screen-card">
+              <strong style="display:block; margin-bottom:10px;">Pengumuman</strong>
+              <span style="color: var(--ink-soft); font-size:13px;">Belum ada pengumuman baru hari ini.</span>
+            </div>
+          `;
+        }
+      },
+      attendance: {
+        title: "Attendance Management",
+        lead: "Screen attendance dibuat untuk merangkum summary kehadiran, timeline check in/check out, dan alur validasi selfie dengan pengalaman yang ringkas.",
+        metrics: [
+          { title: "Kehadiran", value: "0 Hari", note: "Summary period" },
+          { title: "Izin", value: "0 Hari", note: "Current range" },
+          { title: "Absen", value: "0 Hari", note: "Current range" },
+          { title: "Selfie", value: "Enabled", note: "Check In/Out" }
+        ],
+        bullets: [
+          ["Summary Tab", "Ringkasan cepat untuk kehadiran, izin, dan absen dalam satu periode."],
+          ["Timeline Tab", "Riwayat check in dan check out ditampilkan kronologis untuk audit sederhana."],
+          ["Selfie Attendance", "Flow absensi dapat dilengkapi dengan validasi selfie check in dan check out."],
+          ["Action Button", "CTA absensi tetap jelas dan dominan di bagian bawah layar."]
+        ],
+        render() {
+          return `
+            <div class="screen-card">
+              <strong style="display:block; font-size:28px; margin-bottom:14px;">Absensi</strong>
+              <div class="list-line"><b>Tab Aktif</b><span class="tag info">Summary</span></div>
+              <div class="list-line"><b>Periode</b><span>Maret 2026</span></div>
+            </div>
+            <div class="metric-grid" style="margin-top:14px;">
+              <div class="metric"><strong>Kehadiran</strong><b>0</b><span>Hari</span></div>
+              <div class="metric"><strong>Izin</strong><b>0</b><span>Hari</span></div>
+              <div class="metric"><strong>Absen</strong><b>0</b><span>Hari</span></div>
+              <div class="metric"><strong>Lokasi</strong><b>Jakarta</b><span>Check area</span></div>
+            </div>
+            <div class="screen-card" style="margin-top:14px;">
+              <strong style="display:block; margin-bottom:10px;">Riwayat Singkat</strong>
+              <div class="list-line"><b>26 Feb 2026</b><span>Check In 06:58 | Check Out 18:13</span></div>
+              <div class="list-line"><b>27 Feb 2026</b><span>Check In 06:54 | Check Out 18:07</span></div>
+              <div class="list-line"><b>28 Feb 2026</b><span>Check In 06:30 | Check Out 18:38</span></div>
+            </div>
+            <button class="cta" style="width:100%; margin-top:14px; padding:16px 18px;">CHECK IN</button>
+          `;
+        }
+      },
+      payroll: {
+        title: "Payroll & Slip Gaji",
+        lead: "Screen payroll menampilkan nominal gaji bersih, rincian penghasilan, potongan, dan attachment slip gaji agar lebih informatif dan transparan.",
+        metrics: [
+          { title: "Gaji Bersih", value: "Rp 10 Juta", note: "Take home pay" },
+          { title: "Penghasilan", value: "Rp 12.15 Jt", note: "Gross section" },
+          { title: "Potongan", value: "Rp 2.15 Jt", note: "Deductions" },
+          { title: "Lampiran", value: "PDF Ready", note: "Payslip attachment" }
+        ],
+        bullets: [
+          ["Headline Salary", "Nilai gaji bersih langsung tampil sebagai fokus utama layar."],
+          ["Income Breakdown", "Penghasilan dipecah agar lebih mudah dipahami oleh karyawan."],
+          ["Deduction Breakdown", "Potongan payroll ditampilkan transparan dalam daftar terstruktur."],
+          ["Attachment Slot", "Slip PDF dan lampiran payroll lain siap disambungkan ke backend."]
+        ],
+        render() {
+          return `
+            <div class="screen-card" style="background: linear-gradient(135deg, rgba(42,166,186,0.98), rgba(79,128,225,0.96)); color:#fff;">
+              <span style="font-size:14px; opacity:0.88;">Gaji Bersih</span>
+              <div style="font-size:34px; font-weight:800; letter-spacing:-0.04em; margin-top:8px;">Rp. 10.000.000,00</div>
+            </div>
+            <div class="screen-card" style="margin-top:14px;">
+              <strong style="display:block; margin-bottom:10px;">Penghasilan</strong>
+              <div class="list-line"><b>Gaji Pokok</b><span>Rp. 8.500.000,00</span></div>
+              <div class="list-line"><b>Tunjangan Jabatan</b><span>Rp. 2.000.000,00</span></div>
+              <div class="list-line"><b>Tunjangan Operasional</b><span>Rp. 1.650.000,00</span></div>
+            </div>
+            <div class="screen-card" style="margin-top:14px;">
+              <strong style="display:block; margin-bottom:10px;">Potongan</strong>
+              <div class="list-line"><b>PPh 21</b><span>Rp. 350.000,00</span></div>
+              <div class="list-line"><b>BPJS + JHT + JP</b><span>Rp. 340.000,00</span></div>
+              <div class="list-line"><b>Potongan Kehadiran</b><span>Rp. 1.460.000,00</span></div>
+            </div>
+          `;
+        }
+      },
+      talent: {
+        title: "Talent Modules",
+        lead: "One People berkembang lebih jauh dari HR operasional dengan Skill Inventory dan Internal Project Marketplace untuk mendukung talent mobility.",
+        metrics: [
+          { title: "Skill Profiles", value: "3+", note: "Mock employee data" },
+          { title: "Top Skills", value: "IT Support", note: "Searchable skills" },
+          { title: "Projects", value: "Open / In Progress", note: "Internal marketplace" },
+          { title: "Fit Match", value: "Skill-based", note: "Candidate recommendation" }
+        ],
+        bullets: [
+          ["Skill Inventory", "Menyimpan skill hard dan soft skill, sertifikasi, dan project experience per karyawan."],
+          ["Talent Search", "HR dapat menemukan kandidat berdasarkan department, category, atau level skill."],
+          ["Project Marketplace", "Manager dapat mempublikasikan proyek internal dan menerima applicant."],
+          ["Career Mobility", "Membuka jalur pengembangan karyawan melalui proyek berbasis kemampuan aktual."]
+        ],
+        render() {
+          return `
+            <div class="screen-card">
+              <strong style="display:block; font-size:24px;">Skill Inventory</strong>
+              <div class="list-line"><b>Eko Ardianto</b><span>IT Support, Network Troubleshooting, Problem Solving</span></div>
+              <div class="list-line"><b>Nadia Permata</b><span>Financial Modeling, Excel, Data Visualization</span></div>
+              <div class="list-line"><b>Skill Gap</b><span>Data Analytics dan Project Coordination paling dibutuhkan</span></div>
+            </div>
+            <div class="screen-card" style="margin-top:14px;">
+              <strong style="display:block; font-size:24px;">Project Marketplace</strong>
+              <div class="list-line"><b>Service Desk Revamp</b><span class="tag info">Open</span></div>
+              <div class="list-line"><b>Digital Budget Monitoring</b><span class="tag pending">In Progress</span></div>
+              <div class="list-line"><b>Skill Match</b><span>Eko Ardianto cocok untuk IT Support modernization</span></div>
+            </div>
+          `;
+        }
+      },
+      ai: {
+        title: "AI HR Assistant",
+        lead: "Asisten HR berbasis AI menjadi lapisan bantuan cepat untuk cuti, payroll, benefit, reimbursement, rekomendasi pelatihan, dan peluang proyek internal.",
+        metrics: [
+          { title: "FAQ Response", value: "Instant", note: "Leave, payroll, benefit" },
+          { title: "Skill Advice", value: "Enabled", note: "Career path guidance" },
+          { title: "Project Match", value: "Enabled", note: "Internal mobility" },
+          { title: "Experience", value: "Chat-based", note: "Modern assistant UI" }
+        ],
+        bullets: [
+          ["HR FAQ", "Menjawab pertanyaan HR umum secara cepat dan konsisten."],
+          ["Administrative Guidance", "Memberi langkah-langkah reimbursement, payroll, atau proses administrasi lain."],
+          ["Skill Recommendation", "Memanfaatkan data skill inventory untuk saran pengembangan karier."],
+          ["Project Recommendation", "Membantu karyawan melihat proyek internal yang sesuai dengan kemampuan mereka."]
+        ],
+        render() {
+          return `
+            <div class="chat">
+              <div class="bubble user">Apakah ada proyek internal yang cocok dengan skill saya?</div>
+              <div class="bubble assistant">Berdasarkan skill Anda di IT Support, Network Troubleshooting, dan Asset Management, ada peluang yang cocok di proyek <strong>Service Desk Revamp</strong> dan <strong>Site Connectivity Upgrade</strong>.</div>
+              <div class="bubble user">Skill apa yang perlu saya pelajari untuk jadi Data Analyst?</div>
+              <div class="bubble assistant">Saya sarankan mulai dari <strong>Excel Advanced</strong>, <strong>SQL dasar</strong>, <strong>data visualization</strong>, dan <strong>business storytelling</strong>. Anda juga sudah punya fondasi problem solving yang baik.</div>
+            </div>
+            <div class="screen-card" style="margin-top:14px;">
+              <strong style="display:block; margin-bottom:8px;">Suggested Questions</strong>
+              <span style="display:inline-block; margin:4px 6px 0 0;" class="tag info">Berapa sisa cuti saya?</span>
+              <span style="display:inline-block; margin:4px 6px 0 0;" class="tag info">Bagaimana reimbursement?</span>
+              <span style="display:inline-block; margin:4px 6px 0 0;" class="tag info">Skill untuk Data Analyst?</span>
+            </div>
+          `;
+        }
+      },
+      account: {
+        title: "Employee Profile",
+        lead: "Tab akun menyatukan informasi personal dan company data agar karyawan bisa melihat data utama dengan struktur yang sederhana dan mudah dipindai.",
+        metrics: [
+          { title: "Personal Data", value: "Available", note: "Data pribadi" },
+          { title: "Company Data", value: "Available", note: "Department and role" },
+          { title: "Emergency Contact", value: "Configured", note: "Family & contact" },
+          { title: "Education", value: "Tracked", note: "Talent readiness" }
+        ],
+        bullets: [
+          ["Data Pribadi", "Memuat identitas inti karyawan secara ringkas."],
+          ["Data Perusahaan", "Department, position, manager, dan lokasi kerja."],
+          ["Alamat & Kontak", "Detail kontak utama dan kontak darurat."],
+          ["Keluarga & Pendidikan", "Informasi pendukung untuk HR administration."]
+        ],
+        render() {
+          return `
+            <div class="welcome">
+              <small>Profil Akun</small>
+              <h3>Eko Ardianto</h3>
+              <p>IT Support Officer - 0000000583</p>
+            </div>
+            <div class="screen-card">
+              <div class="list-line"><b>Data Pribadi</b><span>›</span></div>
+              <div class="list-line"><b>Data Perusahaan</b><span>›</span></div>
+              <div class="list-line"><b>Alamat</b><span>›</span></div>
+              <div class="list-line"><b>Kontak Darurat</b><span>›</span></div>
+              <div class="list-line"><b>Keluarga</b><span>›</span></div>
+              <div class="list-line"><b>Pendidikan</b><span>›</span></div>
+            </div>
+          `;
+        }
+      },
+      settings: {
+        title: "Settings & Server Control",
+        lead: "Pengaturan aplikasi menggabungkan kontrol keamanan, konfigurasi server, biometric, dan troubleshooting dalam satu area yang konsisten.",
+        metrics: [
+          { title: "Server", value: "Editable", note: "hcm.ekozer.com" },
+          { title: "Biometric", value: "Optional", note: "Ready to enable" },
+          { title: "Password", value: "Managed", note: "Change flow available" },
+          { title: "Support", value: "Troubleshooting", note: "Built-in menu" }
+        ],
+        bullets: [
+          ["Ubah Kata Sandi", "Mendukung maintenance akun secara mandiri."],
+          ["Ubah Server", "Penting untuk deployment enterprise dan environment berbeda."],
+          ["Troubleshooting", "Membantu support internal menangani problem dasar."],
+          ["Biometric", "Memberi opsi pengalaman login yang lebih cepat dan aman."]
+        ],
+        render() {
+          return `
+            <div class="screen-card">
+              <strong style="display:block; font-size:28px; margin-bottom:8px;">Pengaturan</strong>
+              <div class="list-line"><b>Ubah Kata Sandi</b><span>›</span></div>
+              <div class="list-line"><b>Ubah Server</b><span>https://hcm.ekozer.com</span></div>
+              <div class="list-line"><b>Troubleshooting</b><span>›</span></div>
+              <div class="list-line"><b>Biometric</b><span>○</span></div>
+            </div>
+          `;
+        }
+      },
+      messages: {
+        title: "Messaging Center",
+        lead: "Pusat pesan aplikasi dipakai untuk notifikasi approval, slip gaji, roster, dan broadcast informasi penting ke seluruh pengguna.",
+        metrics: [
+          { title: "Unread", value: "3", note: "Current inbox" },
+          { title: "Approval", value: "Active", note: "Workflow update" },
+          { title: "Payroll", value: "Ready", note: "Payslip alert" },
+          { title: "Broadcast", value: "Supported", note: "Ops & HR messages" }
+        ],
+        bullets: [
+          ["Approval Message", "Memberi tahu status pengajuan atau aksi yang perlu ditindaklanjuti."],
+          ["Payroll Notice", "Slip gaji dan update kompensasi bisa disampaikan terstruktur."],
+          ["Roster Update", "Perubahan jadwal dan operasional site lebih mudah didistribusikan."],
+          ["Unified Inbox", "Semua pesan utama terkonsolidasi di satu tab."]
+        ],
+        render() {
+          return `
+            <div class="screen-card">
+              <strong style="display:block; font-size:28px; margin-bottom:8px;">Pesan</strong>
+              <div class="list-line"><b>One People System</b><span>Persetujuan cuti Anda sedang menunggu approval.</span></div>
+              <div class="list-line"><b>Payroll</b><span>Slip gaji bulan Maret sudah dapat diunduh.</span></div>
+              <div class="list-line"><b>Admin Site</b><span>Roster shift minggu depan telah diperbarui.</span></div>
+            </div>
+          `;
+        }
+      }
+    };
+
+    const controlOrder = ["login", "home", "attendance", "payroll", "talent", "ai", "account", "settings", "messages"];
+    let activeScreen = "home";
+    let activeTab = "home";
+
+    const screenScroll = document.getElementById("screen-scroll");
+    const controls = document.getElementById("controls");
+    const detailTitle = document.getElementById("detail-title");
+    const detailLead = document.getElementById("detail-lead");
+    const detailList = document.getElementById("detail-list");
+    const metricGrid = document.getElementById("metric-grid");
+    const tabsRoot = document.getElementById("tabs");
+
+    function renderControls() {
+      controls.innerHTML = controlOrder.map((key) => {
+        const item = screens[key];
+        return `
+          <button class="chip-btn ${activeScreen === key ? "active" : ""}" data-screen="${key}">
+            <strong>${item.title}</strong>
+            <span>${item.lead}</span>
+          </button>
+        `;
+      }).join("");
+
+      controls.querySelectorAll("[data-screen]").forEach((button) => {
+        button.addEventListener("click", () => setScreen(button.dataset.screen));
+      });
+    }
+
+    function renderTabs() {
+      tabsRoot.innerHTML = tabs.map((tab) => `
+        <button class="tab ${activeTab === tab.id ? "active" : ""}" data-tab="${tab.id}">
+          <span>${tab.icon}</span>
+          <span>${tab.label}</span>
+        </button>
+      `).join("");
+
+      tabsRoot.querySelectorAll("[data-tab]").forEach((button) => {
+        button.addEventListener("click", () => {
+          activeTab = button.dataset.tab;
+          if (activeTab === "home") setScreen("home");
+          if (activeTab === "account") setScreen("account");
+          if (activeTab === "settings") setScreen("settings");
+          if (activeTab === "messages") setScreen("messages");
+          if (activeTab === "logout") setScreen("login");
+        });
+      });
+    }
+
+    function renderDetails(screen) {
+      detailTitle.textContent = screen.title;
+      detailLead.textContent = screen.lead;
+      detailList.innerHTML = screen.bullets.map(([title, text]) => `
+        <div class="row">
+          <strong>${title}</strong>
+          <span>${text}</span>
+        </div>
+      `).join("");
+
+      metricGrid.innerHTML = screen.metrics.map((item) => `
+        <div class="metric">
+          <strong>${item.title}</strong>
+          <b>${item.value}</b>
+          <span>${item.note}</span>
+        </div>
+      `).join("");
+    }
+
+    function setScreen(key) {
+      activeScreen = key;
+
+      if (key === "login") {
+        activeTab = "logout";
+      } else if (["home", "account", "settings", "messages"].includes(key)) {
+        activeTab = key;
+      }
+
+      screenScroll.innerHTML = screens[key].render();
+      renderDetails(screens[key]);
+      renderControls();
+      renderTabs();
+      screenScroll.scrollTop = 0;
+    }
+
+    function tickClock() {
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, "0");
+      const mm = String(now.getMinutes()).padStart(2, "0");
+      document.getElementById("phone-time").textContent = `${hh}.${mm}`;
+    }
+
+    tickClock();
+    setInterval(tickClock, 15000);
+    setScreen(activeScreen);
+  </script>
 </body>
 </html>
